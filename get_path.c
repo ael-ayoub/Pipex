@@ -6,7 +6,7 @@
 /*   By: ael-aiss <ael-aiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 22:16:58 by ael-aiss          #+#    #+#             */
-/*   Updated: 2025/01/01 22:26:26 by ael-aiss         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:57:50 by ael-aiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	free_strs(char **strs)
 		free(strs[i]);
 		i++;
 	}
-	free(strs);
+	if (strs)
+		free(strs);
 	strs = NULL;
 }
 
