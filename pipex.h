@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-aiss <ael-aiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 11:40:26 by ael-aiss          #+#    #+#             */
-/*   Updated: 2025/01/07 11:40:27 by ael-aiss         ###   ########.fr       */
+/*   Created: 2025/01/10 00:02:53 by ael-aiss          #+#    #+#             */
+/*   Updated: 2025/01/10 12:00:51 by ael-aiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,18 @@
 
 # include "libft/libft.h"
 # include <fcntl.h>
-# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <sys/types.h>
+# include <string.h>
 # include <sys/wait.h>
 # include <unistd.h>
 
-typedef struct t_pipex
-{
-	int		pipe_fd[2];
-	pid_t	pid1;
-	pid_t	pid2;
-	char	**cmd1_args;
-	char	**cmd2_args;
-	char	*cmd1_path;
-	char	*cmd2_path;
-	char	**envp;
-	int		status;
-}			t_pipex;
-
-char		*get_path(char *command, char **envp);
-void		free_strs(char **strs);
-void		error_exit(char *message);
-void		free_pipex(t_pipex *pipex);
-int			error_msg(char *msg);
-void		init_pipex(t_pipex *pipex, char **argv, char **envp);
+void	child_one(char **argv, int *fdp, char **envp);
+void	child_two(char **argv, int *fdp, char **envp);
+char	*get_path(char *cmd, char **envp);
+int		error_msg(char *msg);
+void	file_error(char *file_name);
+void	cmd_error(char *cmd0, char **cmd);
+void	free_strs(char **strs);
 
 #endif

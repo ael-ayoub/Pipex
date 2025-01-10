@@ -6,7 +6,7 @@
 /*   By: ael-aiss <ael-aiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 22:16:58 by ael-aiss          #+#    #+#             */
-/*   Updated: 2025/01/06 15:57:50 by ael-aiss         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:09:09 by ael-aiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,6 @@ char	*get_path_2(char **envp)
 		index++;
 	}
 	return (NULL);
-}
-
-void	print_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	if (!array)
-		return ;
-	while (array[i])
-	{
-		printf("%s\n", array[i]);
-		i++;
-	}
 }
 
 char	*check_access(char **envps, char *command)

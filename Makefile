@@ -1,32 +1,26 @@
-SRC = main.c \
-	get_path.c \
-	pipex_utils.c
+SRC = pipex.c pipex_util.c get_path.c
 OBG = $(SRC:.c=.o)
+flags = -Wall -Wextra -Werror
+name = pipex
+LIBFT = libft/libft.a
 
-SRC_BONUS = main_BONUS.c \
-	get_path_BONUS.c \
-	pipex_utils_BONUS.c
+all: $(name)
 
-OBG_BONUS = $(SRC:.c=.o)
+$(name) : $(OBG) $(LIBFT)
+	cc $(flags) $(OBG) $(LIBFT) -o $(name)
 
-NAME = pipex
-NAME_BONUS = pipex_bonus
+$(LIBFT):
+	make -C libft
 
-run : fclean all
+%.o:%.c 
+	cc $(flags) -c $< -o $@
 
-bonus: $(NAME_BONUS)
-
-$(NAME) : 
-	cc -g -Wall -Wextra -Werror  $(SRC) libft/libft.a -o $(NAME)
-
-$(NAME_BONUS) : 
-	cc -g -Wall -Wextra -Werror  $(SRC_BONUS) libft/libft.a -o $(NAME_BONUS) 
-
-clean : 
-	rm -f $(OBG) $(OBG_BONUS) 
-
-fclean : clean
-	rm -f $(NAME)
-
+clean: 
+	rm -f $(OBG)
+	make clean -C libft
+fclean: clean
+	rm -f $(name)
+	make fclean -C libft
 re : fclean all
 
+.PHONY: all clean fclean re
